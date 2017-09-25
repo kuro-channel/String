@@ -101,8 +101,47 @@ public class String1 {
 	//	firstHalf("WooHoo") → "Woo"
 	//	firstHalf("HelloThere") → "Hello"
 	//	firstHalf("abcdef") → "abc"
-//	public String firstHalf(String str) {
-//
-//	}
+	public String firstHalf(String str) {
+		// halfを求める
+		int half = str.length() / 2;
+		String result = str.substring(0, half);
+		return result;
+	}
+	//	Given a string, return a version without the first and last char, so "Hello" yields "ell".
+	//	The string length will be at least 2.
 
+	//	withoutEnd("Hello") → "ell"
+	//	withoutEnd("java") → "av"
+	//	withoutEnd("coding") → "odin"
+	public String withoutEnd(String str) {
+		// strのlength()が2文字以下だった場合は、文字列をそのまま返す
+		if(str.length() <2){return str;}
+		return str.substring(1, str.length()-1);
+	}
+	//	Given 2 strings, a and b, return a string of the form short+long+short, with the shorter
+	//  string on the outside and the longer
+	//	string on the inside. The strings will not be the same length, but they may be empty (length 0).
+	//
+	//	comboString("Hello", "hi") → "hiHellohi"
+	//	comboString("hi", "Hello") → "hiHellohi"
+	//	comboString("aaa", "b") → "baaab"
+	public String comboString(String a, String b) {
+		String combo = "";
+		if(a.length() > b.length()){
+			combo = b + a + b;
+		}else if(b.length() > a.length()){
+			combo = a + b + a;
+		}
+		return combo;
+	}
+
+
+	//Given 2 strings, return their concatenation, except omit the first char of each. The strings will be at least length 1.
+	//
+	//nonStart("Hello", "There") → "ellohere"
+	//nonStart("java", "code") → "avaode"
+	//nonStart("shotl", "java") → "hotlava"
+	public String nonStart(String a, String b) {
+		return a.substring(1) + b.substring(1);
+	}
 }
