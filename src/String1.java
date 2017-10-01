@@ -174,4 +174,71 @@ public class String1 {
 		String left = str.substring(0,str.length()-2);
 		return right2 + left;
 	}
+
+	//	Given a string, return a string length 1 from its front, unless front is false,
+	//	in which case return a string length 1 from its back. The string will be non-empty.
+
+	//	theEnd("Hello", true) → "H"
+	//	theEnd("Hello", false) → "o"
+	//	theEnd("oh", true) → "o"]
+	public String theEnd(String str, boolean front) {
+		// frontがtrueの場合は先頭の1文字、falseの場合は後ろの1文字を返す
+		if(str.length() <= 1){return str;}
+		if(front){
+			return str.substring(0, 1);
+		}else{
+			return str.substring(str.length()-1);
+		}
+	}
+	//	Given a string, return a version without both the first and last char of the string.
+	//	The string may be any length, including 0.
+
+	//			withouEnd2("Hello") → "ell"
+	//			withouEnd2("abc") → "b"
+	//			withouEnd2("ab") → ""
+	public String withouEnd2(String str) {
+		if(str.length() < 2){return str="";}
+		// 先頭と最後尾の文字を抜いた文字列を返す
+		String result = str.substring(1, str.length()-1);
+		return result;
+	}
+
+
+	// Given a string of even length, return a string made of the middle two chars,
+	// so the string "string" yields "ri". The string length will be at least 2.
+	//
+	//middleTwo("string") → "ri"
+	//middleTwo("code") → "od"
+	//middleTwo("Practice") → "ct"
+	public String middleTwo(String str) {
+		if(str.length() < 2){return str;};
+		// 文字列の中間地点を求める
+		int middle = str.length() / 2;
+		String result = str.substring(middle-1, middle+1);
+		return result;
+	}
+
+	//	Given a string, return true if it ends in "ly".
+	//
+	//	endsLy("oddly") → true
+	//	endsLy("y") → false
+	//	endsLy("oddy") → false
+	public boolean endsLy(String str) {
+		if(str.endsWith("ly")){
+			return true;
+		}
+		return false;
+	}
+
+	// Given a string and an int n, return a string made of the first
+	// and last n chars from the string. The string length will be at least n.
+	//
+	//
+	// nTwice("Hello", 2) → "Helo"
+	// nTwice("Chocolate", 3) → "Choate"
+	// nTwice("Chocolate", 1) → "Ce"
+	public String nTwice(String str, int n) {
+
+	}
+
 }
