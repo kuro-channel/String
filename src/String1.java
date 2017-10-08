@@ -444,16 +444,71 @@ public class String1 {
 		return result;
 	}
 
-	//Given a string, if a length 2 substring appears at both its beginning and end,
-	//return a string without the substring at the beginning, so "HelloHe" yields "lloHe".
-	//		The substring may overlap with itself, so "Hi" yields "". Otherwise, return the original string unchanged.
+	// Given a string, if a length 2 substring appears at both its beginning and end,
+	// return a string without the substring at the beginning, so "HelloHe" yields "lloHe".
+	// The substring may overlap with itself, so "Hi" yields "". Otherwise, return the original string unchanged.
 	//
 	//
-	//without2("HelloHe") → "lloHe"
-	//without2("HelloHi") → "HelloHi"
-	//without2("Hi") → ""
-//	public String without2(String str) {
-//
-//	}
+	// without2("HelloHe") → "lloHe"
+	// without2("HelloHi") → "HelloHi"
+	// without2("Hi") → ""
+	public String without2(String str) {
+		// strが1文字の場合はそのまま返す
+		if(str.length() == 1){return str;};
+		// strが2文字以下の場合は空文字を返す
+		if(str.length()<=2){return "";};
+		// 先頭2文字と後方2文字が同じ場合、先頭2文字を抜かして返す
+		if(str.substring(0, 2).equals(str.substring(str.length()-2))){
+			return str.substring(2);
+		}
+		return str;
+	}
+
+	// Given a string, return a version without the first 2 chars.
+	// Except keep the first char if it is 'a' and keep the second char if it is 'b'.
+	// The string may be any length. Harder than it looks.
+	//
+	// deFront("Hello") → "llo"
+	// deFront("java") → "va"
+	// deFront("away") → "aay"
+	public String deFront(String str) {
+		// strがa,2文字目がbから始まっている場合
+		if(str.startsWith("a") && str.substring(1,2).equals("b")){
+			return str;
+		}else if(str.startsWith("a")){
+			return str.substring(0,1) + str.substring(2);
+		}else if(str.substring(1,2).equals("b")){
+			return str.substring(1);
+		}
+		return str.substring(2);
+	}
+
+	//  Given a string and a second "word" string, we'll say that the word matches the string
+	//  if it appears at the front of the string, except its first char does not need to match exactly.
+	//  On a match, return the front of the string, or otherwise return the empty string.
+	//	So, so with the string "hippo" the word "hi" returns "hi" and "xip" returns "hip".
+	//	The word will be at least length 1.
+
+	//	startWord("hippo", "hi") → "hi"
+	//	startWord("hippo", "xip") → "hip"
+	//	startWord("hippo", "i") → "h"
+	public String startWord(String str, String word) {
+		if (word.length() > str.length()) return "";
+		if (str.substring(0, word.length()).equals(word)) return word;
+		if (str.substring(1, word.length()).equals(word.substring(1)))
+			return str.charAt(0) + word.substring(1);
+		return "";
+	}
+
+
+	// Given a string, if the first or last chars are 'x', return the string without those 'x' chars,
+	// and otherwise return the string unchanged.
+	//
+	// withoutX("xHix") → "Hi"
+	// withoutX("xHi") → "Hi"
+	// withoutX("Hxix") → "Hxi"
+	public String withoutX(String str) {
+
+	}
 
 }
