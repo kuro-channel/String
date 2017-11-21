@@ -508,7 +508,38 @@ public class String1 {
 	// withoutX("xHi") → "Hi"
 	// withoutX("Hxix") → "Hxi"
 	public String withoutX(String str) {
-
+		if(str.length()<=1){
+			if(str.startsWith("x")){return "";}
+			else{return str;}
+		}
+		// 先頭の文字と後方の文字がともに"x"だった場合、xを除いた数を返す
+		if(str.startsWith("x") && str.endsWith("x")){
+			return str.substring(1, str.length()-1);
+		}else if(str.startsWith("x")){
+			return str.substring(1);
+		}else if(str.endsWith("x")){
+			return str.substring(0,str.length()-1);
+		}
+		return str;
 	}
 
+	//	Given a string, if one or both of the first 2 chars is 'x', return the string without those 'x' chars,
+	//	and otherwise return the string unchanged. This is a little harder than it looks.
+
+	//	withoutX2("xHi") → "Hi"
+	//	withoutX2("Hxi") → "Hi"
+	//	withoutX2("Hi") → "Hi"
+	public String withoutX2(String str) {
+		// strが2文字より短い場合、そのまま返す
+		if(str.length() <2){return "";};
+		// 1文字目、もしくは2文字目に"x"があった場合、"x"を除いて返す
+		if(str.startsWith("x") && str.substring(1,2).equals("x")){
+			return str.substring(2);
+		}else if(str.startsWith("x")){
+			return str.substring(1);
+		}else if(str.substring(1,2).equals("x")){
+			return str.substring(0,1) + str.substring(2);
+		}
+		return str;
+	}
 }
